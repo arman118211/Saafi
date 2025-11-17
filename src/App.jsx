@@ -26,17 +26,20 @@ import NeHome from './component/pages/NeHome'
 import NeContact from './component/pages/NeContact'
 import NeAbout from './component/pages/NeAbout'
 import NeWhyChooseUs from './component/pages/NeWhyChooseUs'
+import ISOCertificatePopup from './component/ISOCertificatePopup'
 
 
 function App() {
   const location = useLocation();
   const hideNavbarFooter = ["/Ne-how-to-wash", "/Ne-shop","/Nepal","/Ne-contact","/Ne-about","/Ne-why-choose-us"];
   const shouldHide = hideNavbarFooter.includes(location.pathname);
+  const isHomePage = location.pathname === "/" || location.pathname === "/Nepal";
 
   return (
     <>  
     
     <ScrollToTop/>
+     <ISOCertificatePopup showOnHomePage={isHomePage} />
       {!shouldHide && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
