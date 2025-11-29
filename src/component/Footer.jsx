@@ -1,7 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+  
+  if(location.pathname === '/login'){
+    return null
+  }
   return (
     <footer className="w-full">
       {/* Top red bar */}

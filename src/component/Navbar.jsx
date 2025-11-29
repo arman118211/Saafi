@@ -13,11 +13,13 @@ export default function Navbar() {
   const location = useLocation();
 
   // Close mobile menu when route changes
+
   useEffect(() => {
     setIsMenuOpen(false);
     setIsLangMenuOpen(false);
     setIsMobileLangMenuOpen(false);
   }, [location.pathname]);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,11 +65,14 @@ export default function Navbar() {
     setIsLangMenuOpen(false);
     setIsMobileLangMenuOpen(false);
   };
+  if(location.pathname === '/login' || location.pathname === '/dashboard'){
+    return null
+  }
 
   return (
     <>
       <motion.div 
-        className={`w-full sticky top-0 left-0 right-0 z-40 bg-white ${isScrolled ? 'shadow-lg' : ''} transition-all duration-300`}
+        className={`w-full sticky top-0 left-0 right-0 z-40 bg-white  ${isScrolled ? 'shadow-lg' : ''} transition-all duration-300`}
         initial={{ y: 0 }}
         animate={{ y: showNavbar ? 0 : -37 }}
         transition={{ duration: 0.3 }}
@@ -79,6 +84,10 @@ export default function Navbar() {
           <div className="flex-1 flex justify-center md:justify-end items-center gap-4">
             {/* Updated links in desktop view */}
             <div className="hidden md:flex items-center space-x-4">
+              {/* Added Login link */}
+              <Link to="/login" className="text-blue-700 hover:text-blue-900 font-bold transition-colors text-sm">
+                LOGIN
+              </Link>
               <Link to="/why-choose-us" className="text-blue-700 hover:text-blue-900 font-bold transition-colors text-sm">
                 WHY CHOOSE US
               </Link>
@@ -177,6 +186,22 @@ export default function Navbar() {
                   transition={{ duration: 0.3 }}
                 ></motion.span>
               </motion.div>
+              
+              {/* Added New Offer link */}
+              <motion.div 
+                className="text-blue-700 hover:text-blue-900 font-bold text-base relative"
+                whileHover="hover"
+              >
+                <Link to="/new-offer">New Offer</Link>
+                <motion.span 
+                  className="absolute -bottom-1 left-0 h-0.5 bg-blue-700 w-0"
+                  variants={{
+                    hover: { width: "100%" }
+                  }}
+                  transition={{ duration: 0.3 }}
+                ></motion.span>
+              </motion.div>
+              
               <motion.div 
                 className="text-blue-700 hover:text-blue-900 font-bold text-base relative"
                 whileHover="hover"
@@ -244,7 +269,8 @@ export default function Navbar() {
             </motion.button>
             
             <div className="flex flex-col gap-3 mb-6">
-              {/* Added Why Choose Us link to mobile menu */}
+              {/* Added Login link to mobile menu */}
+              <Link to="/login" className="text-blue-700 hover:text-blue-900 font-bold text-base">LOGIN</Link>
               <Link to="/why-choose-us" className="text-blue-700 hover:text-blue-900 font-bold text-base">WHY CHOOSE US</Link>
               <Link to="/contact" className="text-blue-700 hover:text-blue-900 font-bold text-base">CONTACT US</Link>
               
@@ -305,6 +331,22 @@ export default function Navbar() {
                 ></motion.span>
                 <Link to="/shop">Shop Products</Link>
               </motion.div>
+              
+              {/* Added New Offer link to mobile menu */}
+              <motion.div 
+                className="text-blue-700 hover:text-blue-900 font-bold text-lg flex items-center py-1.5 border-b border-blue-100 group"
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.35 }}
+                whileHover={{ x: 5 }}
+              >
+                <motion.span 
+                  className="w-0 h-6 bg-blue-700 mr-3 rounded-r-md"
+                  whileHover={{ width: "12px" }}
+                ></motion.span>
+                <Link to="/new-offer">New Offer</Link>
+              </motion.div>
+              
               <motion.div 
                 className="text-blue-700 hover:text-blue-900 font-bold text-lg flex items-center py-1.5 border-b border-blue-100 group"
                 initial={{ x: -20, opacity: 0 }}

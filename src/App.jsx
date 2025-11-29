@@ -27,6 +27,15 @@ import NeContact from './component/pages/NeContact'
 import NeAbout from './component/pages/NeAbout'
 import NeWhyChooseUs from './component/pages/NeWhyChooseUs'
 import ISOCertificatePopup from './component/ISOCertificatePopup'
+import OfferDetailsPage from './component/offers/OfferDetailsPage'
+import OfferPage from './component/offers/OfferPage'
+import Login from './component/login/login'
+import Dashboard from './component/dashboard/AdminDashboard'
+import SellerDashboard from './component/dashboard/SellerDashboard'
+import MainDashboard from './component/dashboard/MainDashboard'
+import Order from './component/seller-dasboared/Order'
+import ProductPage from './component/admin-dashboard/ProductPage'
+import SellerDetail from './component/admin-dashboard/SellerDetails'
 
 
 function App() {
@@ -39,7 +48,7 @@ function App() {
     <>  
     
     <ScrollToTop/>
-     <ISOCertificatePopup showOnHomePage={isHomePage} />
+     {/* <ISOCertificatePopup showOnHomePage={isHomePage} /> */}
       {!shouldHide && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -48,6 +57,17 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/how-to-wash" element={<WashCloth />} />
         <Route path="/why-choose-us" element={<WhyChooseUs/>} />
+        <Route path="/new-offer" element={<OfferDetailsPage/>} />
+        <Route path="/offers/:id" element={<OfferPage />} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/dashboard" element={<MainDashboard/>} />
+        <Route path="/product" element={<ProductPage/>} />
+        <Route path="/seller/:id" element={<SellerDetail />} />
+
+
+
+
+        
 
         <Route path="/Ne-how-to-wash" element={<NeWashCloth />} />
         <Route path="/Ne-shop" element={<NeShop />} />
